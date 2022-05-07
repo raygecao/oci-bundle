@@ -1,0 +1,5 @@
+name: myregistry:5000/nginx-app
+tag: v1.0.0
+artifacts:
+  - name: "myregistry:5000/nginx:1.21.1"
+  - name: "myregistry:5000/nginx-chart:1.0.0"

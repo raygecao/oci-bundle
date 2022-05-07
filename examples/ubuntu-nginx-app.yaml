@@ -1,0 +1,5 @@
+name: myregistry:5000/ubuntu-nginx-app
+tag: v1.0.0
+artifacts:
+  - name: "myregistry:5000/nginx-app:v1.0.0" # 这是一个bundle
+  - name: "myregistry:5000/ubuntu:21.04"  # 这是一个image

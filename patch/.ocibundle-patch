@@ -1,0 +1,2 @@
+origin: myregistry:5000/nginx-app:v1.0.0
+target: myregistry:5000/ubuntu-nginx-app:v1.0.0

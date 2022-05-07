@@ -1,0 +1,32 @@
+# This is an example goreleaser.yaml file with some sane defaults.
+# Make sure to check the documentation at http://goreleaser.com
+before:
+  hooks:
+    # You may remove this if you don't use go modules.
+    - go mod download
+    # you may remove this if you don't need go generate
+    - go generate ./...
+builds:
+  - env:
+      - CGO_ENABLED=0
+    id: ocibundle
+    dir: ./cmd
+    ldflags:
+      - -w -s -X ocibundle/internal/version.version={{ .Tag }} -X ocibundle/internal/version.metadata= -X ocibundle/internal/version.gitCommit={{ .Commit }} -X ocibundle/internal/version.gitTreeState=clean
+    binary: cb
+    goos:
+      - linux
+      - darwin
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
